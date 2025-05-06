@@ -2,6 +2,8 @@ package fr.diginamic.entities;
 
 import javax.persistence.*;
 import java.time.Year;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Définit un film
@@ -9,6 +11,7 @@ import java.time.Year;
 
 
 @Entity
+@Table(name="films")
 public class Films {
 
     /**
@@ -31,11 +34,14 @@ public class Films {
      * Clés Etrangères
      */
     @OneToMany
-    @JoinColumn(name="id_lieuxTournage")
-    private int idLieuxTournage;
+    @JoinColumn(name="id_lieux_tournage")
+    private Lieux lieux;
     @OneToMany
     @JoinColumn(name="nom_pays")
-    private String pays;
+    private Pays pays;
+
+    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FilmsGenres> filmsGenres = new ArrayList<>();
 
     public Films() {
     }
@@ -134,15 +140,15 @@ public class Films {
     /**
      * @return idLieuxTournage
      */
-    public int getIdLieuxTournage() {
-        return idLieuxTournage;
+    public int getLieux() {
+        return lieux;
     }
 
     /**
-     * @param idLieuxTournage
+     * @param lieux
      */
-    public void setIdLieuxTournage(int idLieuxTournage) {
-        this.idLieuxTournage = idLieuxTournage;
+    public void setLieux(int lieux) {
+        this.lieux = lieux;
     }
 
     /**

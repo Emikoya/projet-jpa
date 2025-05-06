@@ -1,4 +1,4 @@
-package fr.diginamic.entities;
+package fr.diginamic.entities.base;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name="personnes")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Personnes {
 
     /**

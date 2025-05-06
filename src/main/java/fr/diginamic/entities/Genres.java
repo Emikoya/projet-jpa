@@ -3,6 +3,8 @@ package fr.diginamic.entities;
 import fr.diginamic.entities.enums.GenresType;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Définit les genres cinématographiques
@@ -22,6 +24,9 @@ public class Genres {
      */
     @Enumerated(EnumType.STRING)
     private GenresType nom;
+
+    @OneToMany(mappedBy = "genre", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FilmsGenres> filmsGenres = new ArrayList<>();
 
     public Genres() {
     }
