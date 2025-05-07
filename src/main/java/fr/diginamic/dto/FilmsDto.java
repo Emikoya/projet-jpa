@@ -1,49 +1,30 @@
-package fr.diginamic.entities;
+package fr.diginamic.dto;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import fr.diginamic.entities.Lieux;
+import fr.diginamic.entities.Pays;
+
 import java.time.Year;
-import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Définit un film
- */
-
-
-@Entity
-@Table(name="films")
-public class Films {
-
-    /**
-     * Clé Primaire
-     * Elle vient d'Internet Movie Database, une grande base de donnée sur les films.
-     * C'est une indentification particulière, pas composés d'entiers, mais une suite de chiffres
-     * et de lettres
-     */
-    @Id
+public class FilmsDto {
+    @JsonProperty("id")
     private String idIMDB;
 
+    @JsonProperty("nom")
     private String titre;
     private Year annee;
     private Float rating;
     private String url;
     private String langue;
+    @JsonProperty("plot")
     private String resume;
 
-    /**
-     * Clés Etrangères
-     */
-    @OneToMany
-    @JoinColumn(name="id_lieux_tournage")
+    @JsonProperty("lieuTournage")
     private Lieux lieux;
-    @OneToMany
-    @JoinColumn(name="nom_pays")
+
     private Pays pays;
 
-    @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<FilmsGenres> filmsGenres = new ArrayList<>();
-
-    public Films() {
+    public FilmsDto() {
     }
 
     /**
@@ -52,6 +33,7 @@ public class Films {
     public String getIdIMDB() {
         return idIMDB;
     }
+
     /**
      * @param idIMDB
      */
@@ -65,6 +47,7 @@ public class Films {
     public String getTitre() {
         return titre;
     }
+
     /**
      * @param titre
      */
@@ -78,6 +61,7 @@ public class Films {
     public Year getAnnee() {
         return annee;
     }
+
     /**
      * @param annee
      */
@@ -91,6 +75,7 @@ public class Films {
     public Float getRating() {
         return rating;
     }
+
     /**
      * @param rating
      */
@@ -104,6 +89,7 @@ public class Films {
     public String getUrl() {
         return url;
     }
+
     /**
      * @param url
      */
@@ -117,6 +103,7 @@ public class Films {
     public String getLangue() {
         return langue;
     }
+
     /**
      * @param langue
      */
@@ -130,6 +117,7 @@ public class Films {
     public String getResume() {
         return resume;
     }
+
     /**
      * @param resume
      */
@@ -163,19 +151,5 @@ public class Films {
      */
     public void setPays(Pays pays) {
         this.pays = pays;
-    }
-
-    /**
-     * @return filmsGenres
-     */
-    public List<FilmsGenres> getFilmsGenres() {
-        return filmsGenres;
-    }
-
-    /**
-     * @param filmsGenres
-     */
-    public void setFilmsGenres(List<FilmsGenres> filmsGenres) {
-        this.filmsGenres = filmsGenres;
     }
 }
