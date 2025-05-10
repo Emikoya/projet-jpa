@@ -10,15 +10,14 @@ import java.util.Date;
  */
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Personnes {
 
     /**
      * Clé Primaire
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idImdb;
+    private String idImdb;
 
     private String nom;
     private String prenom;
@@ -38,14 +37,13 @@ public class Personnes {
     /**
      * @return idImdb
      */
-    public int getIdImdb() {
+    public String getIdImdb() {
         return idImdb;
     }
-
     /**
      * @param idImdb
      */
-    public void setIdImdb(int idImdb) {
+    public void setIdImdb(String idImdb) {
         this.idImdb = idImdb;
     }
 
