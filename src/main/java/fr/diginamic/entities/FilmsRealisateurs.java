@@ -10,6 +10,7 @@ import java.io.Serializable;
  */
 
 @Entity
+@Table(name="films_realisateurs")
 public class FilmsRealisateurs implements Serializable {
 
     @EmbeddedId
