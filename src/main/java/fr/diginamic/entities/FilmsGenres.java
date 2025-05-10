@@ -1,6 +1,9 @@
 package fr.diginamic.entities;
 
+import fr.diginamic.entities.embedded.FilmsGenresId;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Défini la table de jointure entre Films et Genres
@@ -8,17 +11,21 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="films_genres")
-public class FilmsGenres {
+public class FilmsGenres implements Serializable {
+
+    @EmbeddedId
+    private FilmsGenresId id;
+
     /**
      * Clés étrangères.
      */
-    @Id
     @ManyToOne
+    @MapsId("filmsId")
     @JoinColumn(name = "id_film")
     private Films film;
 
-    @Id
     @ManyToOne
+    @MapsId("genresId")
     @JoinColumn(name = "id_genre")
     private Genres genre;
 

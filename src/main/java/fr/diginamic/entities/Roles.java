@@ -1,5 +1,7 @@
 package fr.diginamic.entities;
 
+import fr.diginamic.entities.embedded.RolesId;
+
 import javax.persistence.*;
 
 /**
@@ -8,16 +10,18 @@ import javax.persistence.*;
 @Entity
 @Table(name="roles")
 public class Roles {
+    @EmbeddedId
+    private RolesId id;
     /**
      * Clés étrangères.
      */
-    @Id
     @ManyToOne
+    @MapsId("filmsId")
     @JoinColumn(name = "id_film")
     private Films film;
 
-    @Id
     @ManyToOne
+    @MapsId("acteursId")
     @JoinColumn(name = "id_acteurs")
     private Acteurs acteurs;
 

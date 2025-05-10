@@ -1,6 +1,9 @@
 package fr.diginamic.entities;
 
+import fr.diginamic.entities.embedded.CastingPrincipalId;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Défini la table de jointure entre Films et Acteurs pour le casting principal.
@@ -8,17 +11,20 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="casting_principal")
-public class CastingPrincipal {
+public class CastingPrincipal implements Serializable {
+
+    @EmbeddedId
+    private CastingPrincipalId id;
     /**
      * Clés étrangères.
      */
-    @Id
     @ManyToOne
+    @MapsId("filmsId")
     @JoinColumn(name = "id_film")
     private Films film;
 
-    @Id
     @ManyToOne
+    @MapsId("acteursId")
     @JoinColumn(name = "id_realisateurs")
     private Acteurs acteurs;
 

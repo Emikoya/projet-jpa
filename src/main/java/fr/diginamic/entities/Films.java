@@ -33,10 +33,10 @@ public class Films {
     /**
      * Clés Etrangères
      */
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="id_lieux_tournage")
     private Lieux lieux;
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name="nom_pays")
     private Pays pays;
 

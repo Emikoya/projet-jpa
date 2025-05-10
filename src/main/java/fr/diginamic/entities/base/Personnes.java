@@ -1,5 +1,7 @@
 package fr.diginamic.entities.base;
 
+import fr.diginamic.entities.Lieux;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -28,7 +30,7 @@ public class Personnes {
      */
     @OneToOne
     @JoinColumn(name="id_lieux")
-    private int idLieuNaissance;
+    private Lieux idLieuNaissance;
 
     public Personnes() {
     }
@@ -106,14 +108,13 @@ public class Personnes {
     /**
      * @return idLieuNaissance
      */
-    public int getIdLieuNaissance() {
+    public Lieux getIdLieuNaissance() {
         return idLieuNaissance;
     }
-
     /**
      * @param idLieuNaissance
      */
-    public void setIdLieuNaissance(int idLieuNaissance) {
+    public void setIdLieuNaissance(Lieux idLieuNaissance) {
         this.idLieuNaissance = idLieuNaissance;
     }
 }

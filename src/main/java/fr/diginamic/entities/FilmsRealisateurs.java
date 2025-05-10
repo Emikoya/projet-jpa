@@ -1,23 +1,30 @@
 package fr.diginamic.entities;
 
+import fr.diginamic.entities.embedded.FilmsRealisateursId;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Défini la table de jointure entre Films et Realisateurs
  */
 
 @Entity
-public class FilmsRealisateurs {
+public class FilmsRealisateurs implements Serializable {
+
+    @EmbeddedId
+    private FilmsRealisateursId id;
+
     /**
      * Clés étrangères.
      */
-    @Id
     @ManyToOne
+    @MapsId("filmsId")
     @JoinColumn(name = "id_film")
     private Films film;
 
-    @Id
     @ManyToOne
+    @MapsId("realId")
     @JoinColumn(name = "id_realisateur")
     private Realisateurs realisateurs;
 
