@@ -23,7 +23,9 @@ public class DatabaseUtils {
     }
 
     /**
-     * Crée la base de données
+     * Crée la base de données.
+     * On appelle la fonction databaseExist afin de vérifier si
+     * la basse de donnée existe ou non.
      */
     public static void createDatabase(Connection connection, String dbName) throws SQLException {
         if (!databaseExists(connection, dbName)) {
