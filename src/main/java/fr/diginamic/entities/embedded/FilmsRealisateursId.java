@@ -1,5 +1,6 @@
 package fr.diginamic.entities.embedded;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,13 +11,16 @@ import java.util.Objects;
 
 @Embeddable
 public class FilmsRealisateursId implements Serializable {
+
+    @Column(name = "id_films")
     private String filmsId;
-    private int realId;
+    @Column(name = "id_realisateurs")
+    private String realId;
 
     public FilmsRealisateursId() {
     }
 
-    public FilmsRealisateursId(String filmsId, int realId) {
+    public FilmsRealisateursId(String filmsId, String realId) {
         this.filmsId = filmsId;
         this.realId = realId;
     }

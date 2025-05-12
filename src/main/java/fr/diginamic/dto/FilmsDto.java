@@ -8,7 +8,7 @@ import java.time.Year;
 
 public class FilmsDto {
     @JsonProperty("id")
-    private String idIMDB;
+    private String idImdb;
 
     @JsonProperty("nom")
     private String titre;
@@ -28,17 +28,17 @@ public class FilmsDto {
     }
 
     /**
-     * @return idIMDB
+     * @return idImdb
      */
-    public String getIdIMDB() {
-        return idIMDB;
+    public String getIdImdb() {
+        return idImdb;
     }
 
     /**
-     * @param idIMDB
+     * @param idImdb
      */
-    public void setIdIMDB(String idIMDB) {
-        this.idIMDB = idIMDB;
+    public void setidImdb(String idImdb) {
+        this.idImdb = idImdb;
     }
 
     /**

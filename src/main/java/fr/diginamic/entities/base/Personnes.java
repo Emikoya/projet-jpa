@@ -17,6 +17,7 @@ public class Personnes {
      * Clé Primaire
      */
     @Id
+    @Column(name = "idImdb")
     private String idImdb;
 
     private String nom;

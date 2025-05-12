@@ -21,12 +21,12 @@ public class FilmsRealisateurs implements Serializable {
      */
     @ManyToOne
     @MapsId("filmsId")
-    @JoinColumn(name = "id_film")
+    @JoinColumn(name = "id_films", referencedColumnName = "idImdb")
     private Films film;
 
     @ManyToOne
     @MapsId("realId")
-    @JoinColumn(name = "id_realisateur")
+    @JoinColumn(name = "id_realisateur", referencedColumnName = "idImdb")
     private Realisateurs realisateurs;
 
 

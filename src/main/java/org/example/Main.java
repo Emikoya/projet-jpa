@@ -1,11 +1,7 @@
 package org.example;
 
 import fr.diginamic.services.DatabaseVerif;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
+import fr.diginamic.services.FilmsInsert;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -14,14 +10,9 @@ public class Main {
         DatabaseVerif service = new DatabaseVerif();
         service.databaseVerif();
 
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_project");
-        EntityManager em = emf.createEntityManager();
+        FilmsInsert insert = new FilmsInsert();
+        insert.insertData();
 
-        em.getTransaction().begin();
 
-        em.getTransaction().commit();
-
-        em.close();
-        emf.close();
     }
 }

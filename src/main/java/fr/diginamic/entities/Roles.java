@@ -17,12 +17,12 @@ public class Roles {
      */
     @ManyToOne
     @MapsId("filmsId")
-    @JoinColumn(name = "id_film")
-    private Films film;
+    @JoinColumn(name = "id_films", referencedColumnName = "idImdb")
+    private Films films;
 
     @ManyToOne
     @MapsId("acteursId")
-    @JoinColumn(name = "id_acteurs")
+    @JoinColumn(name = "id_acteurs", referencedColumnName = "idImdb")
     private Acteurs acteurs;
 
     private String personnage;
@@ -33,15 +33,15 @@ public class Roles {
     /**
      * @return film
      */
-    public Films getFilm() {
-        return film;
+    public Films getFilms() {
+        return films;
     }
 
     /**
-     * @param film
+     * @param films
      */
-    public void setFilm(Films film) {
-        this.film = film;
+    public void setFilms(Films films) {
+        this.films = films;
     }
 
     /**

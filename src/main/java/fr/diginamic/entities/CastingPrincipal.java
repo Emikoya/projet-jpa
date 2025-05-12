@@ -20,12 +20,12 @@ public class CastingPrincipal implements Serializable {
      */
     @ManyToOne
     @MapsId("filmsId")
-    @JoinColumn(name = "id_film")
+    @JoinColumn(name = "id_film", referencedColumnName = "idImdb")
     private Films film;
 
     @ManyToOne
     @MapsId("acteursId")
-    @JoinColumn(name = "id_realisateurs")
+    @JoinColumn(name = "id_realisateurs", referencedColumnName = "idImdb")
     private Acteurs acteurs;
 
     public CastingPrincipal() {

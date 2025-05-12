@@ -29,7 +29,7 @@ public class ConvertFilmsDto {
      */
     public static Films toEntity(FilmsDto dto) {
         Films film = new Films();
-        film.setIdIMDB(dto.getIdIMDB());
+        film.setIdImdb(dto.getIdImdb());
         film.setTitre(dto.getTitre());
         film.setAnnee(dto.getAnnee());
         film.setLangue(dto.getLangue());

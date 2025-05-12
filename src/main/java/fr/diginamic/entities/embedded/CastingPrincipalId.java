@@ -1,18 +1,22 @@
 package fr.diginamic.entities.embedded;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
 public class CastingPrincipalId implements Serializable {
+
+    @Column(name = "id_films")
     private String filmsId;
-    private int acteursId;
+    @Column(name = "id_acteurs")
+    private String acteursId;
 
     public CastingPrincipalId() {
     }
 
-    public CastingPrincipalId(String filmsId, int acteursId) {
+    public CastingPrincipalId(String filmsId, String acteursId) {
         this.filmsId = filmsId;
         this.acteursId = acteursId;
     }

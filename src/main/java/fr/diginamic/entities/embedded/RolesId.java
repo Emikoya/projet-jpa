@@ -1,5 +1,6 @@
 package fr.diginamic.entities.embedded;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,13 +11,16 @@ import java.util.Objects;
 
 @Embeddable
 public class RolesId implements Serializable {
+
+    @Column(name = "id_films")
     private String filmsId;
-    private int acteursId;
+    @Column(name = "id_acteurs")
+    private String acteursId;
 
     public RolesId() {
     }
 
-    public RolesId(String filmsId, int acteursId) {
+    public RolesId(String filmsId, String acteursId) {
         this.filmsId = filmsId;
         this.acteursId = acteursId;
     }
@@ -25,7 +29,7 @@ public class RolesId implements Serializable {
     public boolean equals(Object object) {
         if (object == null || getClass() != object.getClass()) return false;
         RolesId rolesId = (RolesId) object;
-        return acteursId == rolesId.acteursId && Objects.equals(filmsId, rolesId.filmsId);
+        return Objects.equals(acteursId, rolesId.acteursId) && Objects.equals(filmsId, rolesId.filmsId);
     }
 
     @Override

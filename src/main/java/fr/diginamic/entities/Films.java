@@ -21,7 +21,8 @@ public class Films {
      * et de lettres
      */
     @Id
-    private String idIMDB;
+    @Column(name = "idImdb")
+    private String idImdb;
 
     private String titre;
     private Year annee;
@@ -34,10 +35,10 @@ public class Films {
      * Clés Etrangères
      */
     @ManyToOne
-    @JoinColumn(name="id_lieux_tournage")
+    @JoinColumn(name="id_lieux_tournage", nullable = true)
     private Lieux lieux;
     @ManyToOne
-    @JoinColumn(name="nom_pays")
+    @JoinColumn(name="nom_pays", nullable = true)
     private Pays pays;
 
     @OneToMany(mappedBy = "film", cascade = CascadeType.ALL, orphanRemoval = true)
@@ -47,16 +48,17 @@ public class Films {
     }
 
     /**
-     * @return idIMDB
+     * @return idImdb
      */
-    public String getIdIMDB() {
-        return idIMDB;
+    public String getIdImdb() {
+        return idImdb;
     }
+
     /**
-     * @param idIMDB
+     * @param idImdb
      */
-    public void setIdIMDB(String idIMDB) {
-        this.idIMDB = idIMDB;
+    public void setIdImdb(String idImdb) {
+        this.idImdb = idImdb;
     }
 
     /**
