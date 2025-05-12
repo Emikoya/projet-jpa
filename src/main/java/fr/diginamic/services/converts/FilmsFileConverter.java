@@ -2,8 +2,11 @@ package fr.diginamic.services.converts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.diginamic.dto.FilmsDto;
+import fr.diginamic.dto.LieuxDto;
 import fr.diginamic.entities.Films;
+import fr.diginamic.entities.Lieux;
 import fr.diginamic.entities.Pays;
+import fr.diginamic.services.LieuxService;
 import fr.diginamic.services.PaysService;
 
 import java.io.File;
@@ -39,9 +42,24 @@ public class FilmsFileConverter {
         films.setResume(dto.getResume());
         films.setRating(dto.getRating());
         // TODO: gérer aussi les genres, pays, lieux s’ils existent
+        // Récupération du pays principal du film
         PaysService paysService = new PaysService();
         Pays pays = paysService.getOrCreate(dto.getPays().getNom(), dto.getPays().getUrl());
         films.setPays(pays);
+
+        // Récupération du lieu de tournage (ville, état, pays)
+        LieuxService lieuxService = new LieuxService();
+        LieuxDto lieuDto = dto.getLieux();
+        Pays paysLieu = paysService.getOrCreate(lieuDto.getPays(), null); // URL souvent absente ici
+
+        Lieux lieux = lieuxService.getOrCreate(
+                lieuDto.getId(),
+                lieuDto.getEtat(),
+                lieuDto.getVille(),
+                paysLieu
+        );
+        films.setLieux(lieux);
+
         return films;
     }
 }
