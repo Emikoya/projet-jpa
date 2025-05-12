@@ -1,7 +1,7 @@
 package org.example;
 
 import fr.diginamic.services.DatabaseVerif;
-import fr.diginamic.services.FilmsInsert;
+import fr.diginamic.services.inserts.PaysInsert;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -10,9 +10,11 @@ public class Main {
         DatabaseVerif service = new DatabaseVerif();
         service.databaseVerif();
 
-        FilmsInsert insert = new FilmsInsert();
-        insert.insertData();
+//        FilmsInsert insertFilms = new FilmsInsert();
+//        insertFilms.insertData();
 
+        PaysInsert insertPays = new PaysInsert();
+        insertPays.insertData();
 
     }
 }

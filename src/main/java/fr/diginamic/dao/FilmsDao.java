@@ -3,9 +3,6 @@ package fr.diginamic.dao;
 import fr.diginamic.entities.Films;
 
 import javax.persistence.EntityManager;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class FilmsDao implements InterfaceDao<Films>{
 
