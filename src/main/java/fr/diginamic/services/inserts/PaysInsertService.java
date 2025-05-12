@@ -3,7 +3,7 @@ package fr.diginamic.services.inserts;
 import fr.diginamic.dao.PaysDao;
 import fr.diginamic.dto.PaysDto;
 import fr.diginamic.entities.Pays;
-import fr.diginamic.services.converts.ConvertPaysDto;
+import fr.diginamic.services.converts.PaysFileConverter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -22,7 +22,7 @@ public class PaysInsertService {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        ConvertPaysDto reader = new ConvertPaysDto();
+        PaysFileConverter reader = new PaysFileConverter();
         List<PaysDto> dtos = reader.mapperCsv(Paths.get("src/main/resources/pays.csv"));
 
         PaysDao dao = new PaysDao(entityManager);
@@ -31,7 +31,7 @@ public class PaysInsertService {
             entityManager.getTransaction().begin();
 
             for (PaysDto dto : dtos) {
-                Pays pays = ConvertPaysDto.toEntity(dto);
+                Pays pays = PaysFileConverter.toEntity(dto);
                 dao.insert(pays);
             }
 

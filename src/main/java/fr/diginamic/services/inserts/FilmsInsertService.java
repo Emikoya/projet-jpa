@@ -3,7 +3,7 @@ package fr.diginamic.services.inserts;
 import fr.diginamic.dao.FilmsDao;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.entities.Films;
-import fr.diginamic.services.converts.ConvertFilmsDto;
+import fr.diginamic.services.converts.FilmsFileConverter;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -21,7 +21,7 @@ public class FilmsInsertService {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        ConvertFilmsDto reader = new ConvertFilmsDto();
+        FilmsFileConverter reader = new FilmsFileConverter();
         List<FilmsDto> dtos = reader.mapperJson("src/main/resources/filmstest.json");
 
         FilmsDao dao = new FilmsDao(entityManager);
@@ -30,7 +30,7 @@ public class FilmsInsertService {
             entityManager.getTransaction().begin();
 
             for (FilmsDto dto : dtos) {
-                Films film = ConvertFilmsDto.toEntity(dto);
+                Films film = FilmsFileConverter.toEntity(dto);
                 dao.insert(film);
             }
 
