@@ -40,7 +40,7 @@ public class FilmsFileConverter {
         films.setRating(dto.getRating());
         // TODO: gérer aussi les genres, pays, lieux s’ils existent
         PaysService paysService = new PaysService();
-        Pays pays = paysService.getOrCreate(dto.getPays().getNom());
+        Pays pays = paysService.getOrCreate(dto.getPays().getNom(), dto.getPays().getUrl());
         films.setPays(pays);
         return films;
     }

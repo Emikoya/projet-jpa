@@ -4,7 +4,6 @@ import fr.diginamic.entities.Pays;
 
 import javax.persistence.*;
 import java.sql.SQLException;
-import java.util.List;
 
 public class PaysDao implements InterfaceDao<Pays>{
 
@@ -24,18 +23,19 @@ public class PaysDao implements InterfaceDao<Pays>{
         entityManager.persist(pays);
     }
 
-    public Pays getOrCreate(String nomPays) {
-        try {
-            return entityManager.find(Pays.class, nomPays);
-        } catch (Exception e) {
-            return create(nomPays);
+    /**
+     * Récupère un pays existant par son nom, ou le crée s'il n'existe pas encore.
+     */
+    public Pays getOrCreate(String nomPays, String url) {
+        Pays pays = entityManager.find(Pays.class, nomPays);
+        if (pays == null) {
+            pays = new Pays();
+            pays.setNom(nomPays);
+            pays.setUrl(url);
+            insert(pays);
         }
-    }
-
-    private Pays create(String nomPays) {
-        Pays pays = new Pays(nomPays);
-        entityManager.persist(pays);
         return pays;
     }
+
 
 }
