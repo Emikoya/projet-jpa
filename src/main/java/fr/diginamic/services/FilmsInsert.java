@@ -10,31 +10,37 @@ import javax.persistence.Persistence;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Cette classe permet d'instancier une transaction avec la base de données
+ * afin d'insérer les données d'un film d'un fichier json.
+ */
+
 public class FilmsInsert {
     public void insertData() throws IOException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_project");
-        EntityManager em = emf.createEntityManager();
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
 
         ConvertFilmsDto reader = new ConvertFilmsDto();
         List<FilmsDto> dtos = reader.mapperJson("src/main/resources/filmstest.json");
 
-        FilmsDao dao = new FilmsDao(em);
+        FilmsDao dao = new FilmsDao(entityManager);
 
         try {
-            em.getTransaction().begin();
+            entityManager.getTransaction().begin();
 
             for (FilmsDto dto : dtos) {
                 Films film = ConvertFilmsDto.toEntity(dto);
                 dao.insert(film);
             }
 
-            em.getTransaction().commit();
+            entityManager.getTransaction().commit();
+
         } catch (Exception e) {
-            em.getTransaction().rollback();
+            entityManager.getTransaction().rollback();
             throw new RuntimeException(e);
         } finally {
-            em.close();
-            emf.close();
+            entityManager.close();
+            entityManagerFactory.close();
         }
     }
 }
