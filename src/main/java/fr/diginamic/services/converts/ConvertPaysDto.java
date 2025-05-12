@@ -1,4 +1,4 @@
-package fr.diginamic.services;
+package fr.diginamic.services.converts;
 
 import fr.diginamic.dto.PaysDto;
 import fr.diginamic.entities.Pays;

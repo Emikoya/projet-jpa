@@ -1,4 +1,4 @@
-package fr.diginamic.services;
+package fr.diginamic.services.converts;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;

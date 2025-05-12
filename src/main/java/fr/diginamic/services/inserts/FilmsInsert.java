@@ -3,7 +3,7 @@ package fr.diginamic.services.inserts;
 import fr.diginamic.dao.FilmsDao;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.entities.Films;
-import fr.diginamic.services.ConvertFilmsDto;
+import fr.diginamic.services.converts.ConvertFilmsDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

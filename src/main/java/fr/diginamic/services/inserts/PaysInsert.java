@@ -3,7 +3,7 @@ package fr.diginamic.services.inserts;
 import fr.diginamic.dao.PaysDao;
 import fr.diginamic.dto.PaysDto;
 import fr.diginamic.entities.Pays;
-import fr.diginamic.services.ConvertPaysDto;
+import fr.diginamic.services.converts.ConvertPaysDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;

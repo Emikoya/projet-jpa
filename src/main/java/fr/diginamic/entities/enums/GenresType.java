@@ -1,5 +1,10 @@
 package fr.diginamic.entities.enums;
 
+/**
+ * Définition d'une énumération de tous les genres.
+ * Cela a été récupérer du site internet Imdb
+ */
+
 public enum GenresType {
     ACTION,
     ADULT,
