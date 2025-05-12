@@ -18,9 +18,7 @@ import java.util.List;
  */
 
 public class PaysInsertService {
-    public void insertData() throws IOException {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public void insertData(EntityManager entityManager) throws IOException {
 
         PaysFileConverter reader = new PaysFileConverter();
         List<PaysDto> dtos = reader.mapperCsv(Paths.get("src/main/resources/pays.csv"));
@@ -42,7 +40,6 @@ public class PaysInsertService {
             throw new RuntimeException(e);
         } finally {
             entityManager.close();
-            entityManagerFactory.close();
         }
     }
 }

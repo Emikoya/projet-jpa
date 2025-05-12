@@ -1,12 +1,14 @@
 package fr.diginamic.services.converts;
 
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.entities.Films;
+import fr.diginamic.entities.Pays;
+import fr.diginamic.services.PaysService;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -21,22 +23,25 @@ public class FilmsFileConverter {
      */
     public List<FilmsDto> mapperJson(String path) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(new File(path), new TypeReference<List<FilmsDto>>() {});
+        return List.of(mapper.readValue(new File(path), FilmsDto[].class));
     }
 
     /**
      * Mappage des données
      */
-    public static Films toEntity(FilmsDto dto) {
-        Films film = new Films();
-        film.setIdImdb(dto.getIdImdb());
-        film.setTitre(dto.getTitre());
-        film.setAnnee(dto.getAnnee());
-        film.setLangue(dto.getLangue());
-        film.setUrl(dto.getUrl());
-        film.setResume(dto.getResume());
-        film.setRating(dto.getRating());
+    public static Films toEntity(FilmsDto dto) throws SQLException {
+        Films films = new Films();
+        films.setIdImdb(dto.getIdImdb());
+        films.setTitre(dto.getTitre());
+        films.setAnnee(dto.getAnnee());
+        films.setLangue(dto.getLangue());
+        films.setUrl(dto.getUrl());
+        films.setResume(dto.getResume());
+        films.setRating(dto.getRating());
         // TODO: gérer aussi les genres, pays, lieux s’ils existent
-        return film;
+        PaysService paysService = new PaysService();
+        Pays pays = paysService.getOrCreate(dto.getPays().getNom());
+        films.setPays(pays);
+        return films;
     }
 }

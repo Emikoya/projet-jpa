@@ -6,8 +6,6 @@ import fr.diginamic.entities.Films;
 import fr.diginamic.services.converts.FilmsFileConverter;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.IOException;
 import java.util.List;
 
@@ -17,21 +15,19 @@ import java.util.List;
  */
 
 public class FilmsInsertService {
-    public void insertData() throws IOException {
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public void insertData(EntityManager entityManager) throws IOException {
 
         FilmsFileConverter reader = new FilmsFileConverter();
         List<FilmsDto> dtos = reader.mapperJson("src/main/resources/filmstest.json");
 
-        FilmsDao dao = new FilmsDao(entityManager);
+        FilmsDao daoFilms = new FilmsDao(entityManager);
 
         try {
             entityManager.getTransaction().begin();
 
             for (FilmsDto dto : dtos) {
                 Films film = FilmsFileConverter.toEntity(dto);
-                dao.insert(film);
+                daoFilms.insert(film);
             }
 
             entityManager.getTransaction().commit();
@@ -41,7 +37,6 @@ public class FilmsInsertService {
             throw new RuntimeException(e);
         } finally {
             entityManager.close();
-            entityManagerFactory.close();
         }
     }
 }

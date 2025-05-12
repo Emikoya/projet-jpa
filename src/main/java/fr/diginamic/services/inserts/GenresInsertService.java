@@ -16,9 +16,7 @@ import javax.persistence.Persistence;
 
 public class GenresInsertService {
 
-    public void insertData(){
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
+    public void insertData(EntityManager entityManager){
 
         GenresDao genresDao = new GenresDao(entityManager);
 
@@ -36,7 +34,6 @@ public class GenresInsertService {
             throw new RuntimeException(e);
         } finally {
             entityManager.close();
-            entityManagerFactory.close();
         }
     }
 

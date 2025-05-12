@@ -20,7 +20,7 @@ public class FilmsDto {
     private String resume;
 
     @JsonProperty("lieuTournage")
-    private Lieux lieux;
+    private LieuxDto lieux;
 
     private Pays pays;
 
@@ -128,14 +128,14 @@ public class FilmsDto {
     /**
      * @return lieux
      */
-    public Lieux getLieux() {
+    public LieuxDto getLieux() {
         return lieux;
     }
 
     /**
      * @param lieux
      */
-    public void setLieux(Lieux lieux) {
+    public void setLieux(LieuxDto lieux) {
         this.lieux = lieux;
     }
 

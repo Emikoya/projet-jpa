@@ -22,6 +22,9 @@ public class Pays {
     public Pays() {
     }
 
+    public Pays(String nomPays) {
+    }
+
     /**
      * @return nom
      */

@@ -8,8 +8,6 @@ import java.util.List;
  */
 
 public interface InterfaceDao<T> {
-//    List<T> extraire() throws SQLException;
+    T extraire(T entity) throws SQLException;
     void insert(T entity);
-//    int update(T entity) throws SQLException;
-//    boolean delete(T entity) throws SQLException;
 }
