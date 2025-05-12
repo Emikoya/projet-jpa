@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
  * afin d'insérer les données de la classe enum GenresTypes.
  */
 
-public class GenresInsert {
+public class GenresInsertService {
 
     public void insertData(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");

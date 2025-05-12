@@ -1,9 +1,7 @@
 package org.example;
 
-import fr.diginamic.entities.Genres;
 import fr.diginamic.services.DatabaseVerif;
 import fr.diginamic.services.inserts.GenresInsert;
-import fr.diginamic.services.inserts.PaysInsert;
 
 public class Main {
     public static void main(String[] args) throws Exception {
@@ -15,7 +13,7 @@ public class Main {
 //        FilmsInsert insertFilms = new FilmsInsert();
 //        insertFilms.insertData();
 
-//        PaysInsert insertPays = new PaysInsert();
+//        PaysInsertService insertPays = new PaysInsertService();
 //        insertPays.insertData();
 
 //        GenresInsert insertGenres = new GenresInsert();

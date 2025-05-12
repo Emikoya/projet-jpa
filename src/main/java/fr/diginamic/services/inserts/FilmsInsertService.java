@@ -1,38 +1,37 @@
 package fr.diginamic.services.inserts;
 
-import fr.diginamic.dao.PaysDao;
-import fr.diginamic.dto.PaysDto;
-import fr.diginamic.entities.Pays;
-import fr.diginamic.services.converts.ConvertPaysDto;
+import fr.diginamic.dao.FilmsDao;
+import fr.diginamic.dto.FilmsDto;
+import fr.diginamic.entities.Films;
+import fr.diginamic.services.converts.ConvertFilmsDto;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.io.IOException;
-import java.nio.file.Paths;
 import java.util.List;
 
 /**
  * Cette classe permet d'instancier une transaction avec la base de données
- * afin d'insérer les données d'un pays d'un fichier csv.
+ * afin d'insérer les données d'un film d'un fichier json.
  */
 
-public class PaysInsert {
+public class FilmsInsertService {
     public void insertData() throws IOException {
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("jpa_project");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        ConvertPaysDto reader = new ConvertPaysDto();
-        List<PaysDto> dtos = reader.mapperCsv(Paths.get("src/main/resources/pays.csv"));
+        ConvertFilmsDto reader = new ConvertFilmsDto();
+        List<FilmsDto> dtos = reader.mapperJson("src/main/resources/filmstest.json");
 
-        PaysDao dao = new PaysDao(entityManager);
+        FilmsDao dao = new FilmsDao(entityManager);
 
         try {
             entityManager.getTransaction().begin();
 
-            for (PaysDto dto : dtos) {
-                Pays pays = ConvertPaysDto.toEntity(dto);
-                dao.insert(pays);
+            for (FilmsDto dto : dtos) {
+                Films film = ConvertFilmsDto.toEntity(dto);
+                dao.insert(film);
             }
 
             entityManager.getTransaction().commit();

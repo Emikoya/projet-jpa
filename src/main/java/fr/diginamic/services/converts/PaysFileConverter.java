@@ -15,7 +15,7 @@ import java.util.Objects;
  * Cette classe sera utilisée pour lire le fichier csv
  * Ainsi que mapper chaque donnée pour les convertir en entité
  */
-public class ConvertPaysDto {
+public class PaysFileConverter {
 
 
     /**

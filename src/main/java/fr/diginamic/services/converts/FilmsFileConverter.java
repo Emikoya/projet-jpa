@@ -14,7 +14,7 @@ import java.util.List;
  * Ainsi que mapper chaque donnée pour les convertir en entité
  */
 
-public class ConvertFilmsDto {
+public class FilmsFileConverter {
 
     /**
      * Lecture et mappage du fichier json
