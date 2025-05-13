@@ -13,8 +13,8 @@ public class LieuxService {
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_project");
 
     /**
-     * Cette méthode permet de récupérer un pays existant ou d'en créer un nouveau
-     * si celui-ci n'existe pas encore.
+     * Cette méthode permet d'instancier une transaction avec la base de données
+     * en vérifiant l'existence du lieux avec la méthode getOrCreate
      */
     public Lieux getLieux(int id, String etat, String ville, Pays pays) {
         EntityManager em = emf.createEntityManager();

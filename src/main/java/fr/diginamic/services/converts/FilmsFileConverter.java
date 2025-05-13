@@ -50,8 +50,7 @@ public class FilmsFileConverter {
         // Récupération du lieu de tournage (ville, état, pays)
         LieuxService lieuxService = new LieuxService();
         LieuxDto lieuDto = dto.getLieux();
-        Pays paysLieu = paysService.getPays(lieuDto.getPays(), null); // URL souvent absente ici
-
+        Pays paysLieu = paysService.getPays(lieuDto.getPays(), null);
         Lieux lieux = lieuxService.getLieux(
                 lieuDto.getId(),
                 lieuDto.getEtat(),

@@ -20,7 +20,7 @@ public class Main {
         FilmsInsertService insertFilms = new FilmsInsertService();
         insertFilms.insertData(entityManager);
 
-//        PaysInsertService insertPays = new PaysInsertService();
+//        PaysService insertPays = new PaysService();
 //        insertPays.insertData(entityManager);
 
 //        GenresInsert insertGenres = new GenresInsert();
