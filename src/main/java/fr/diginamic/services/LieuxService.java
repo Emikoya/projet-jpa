@@ -12,7 +12,7 @@ public class LieuxService {
      * Cette méthode permet d'instancier une transaction avec la base de données
      * en vérifiant l'existence du lieux avec la méthode getOrCreate
      */
-    public Lieux getLieux(EntityManager entityManager, int id, String etat, String ville, Pays pays) {
+    public static Lieux getLieux(EntityManager entityManager, Integer id, String etat, String ville, Pays pays) {
         Lieux lieux;
 
         try {

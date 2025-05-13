@@ -1,5 +1,7 @@
 package fr.diginamic.entities.embedded;
 
+import fr.diginamic.entities.Realisateurs;
+
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
@@ -35,5 +37,33 @@ public class FilmsRealisateursId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(filmsId, realId);
+    }
+
+    /**
+     * @return filmsId
+     */
+    public String getFilmsId() {
+        return filmsId;
+    }
+
+    /**
+     * @param filmsId
+     */
+    public void setFilmsId(String filmsId) {
+        this.filmsId = filmsId;
+    }
+
+    /**
+     * @return realId
+     */
+    public String getRealId() {
+        return realId;
+    }
+
+    /**
+     * @param realId
+     */
+    public void setRealId(String realId) {
+        this.realId = realId;
     }
 }

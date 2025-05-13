@@ -1,20 +1,14 @@
 package fr.diginamic.services.converts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import fr.diginamic.dao.FilmsGenresDao;
-import fr.diginamic.dao.GenresDao;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.dto.LieuxDto;
 import fr.diginamic.entities.*;
-import fr.diginamic.entities.enums.GenresType;
-import fr.diginamic.services.GenresService;
 import fr.diginamic.services.LieuxService;
 import fr.diginamic.services.PaysService;
-import fr.diginamic.utils.DateUtils;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -32,6 +26,7 @@ public class FilmsFileConverter {
      */
     public List<FilmsDto> mapperJson(String path) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
+        mapper.registerModule(new JavaTimeModule());
         return List.of(mapper.readValue(new File(path), FilmsDto[].class));
     }
 

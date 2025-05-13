@@ -27,6 +27,9 @@ public class FilmsDto {
     @JsonProperty("genres")
     private List<String> genres;
 
+    @JsonProperty("realisateurs")
+    private List<RealisateursDto> realisateurs;
+
     public FilmsDto() {
     }
 
@@ -167,5 +170,19 @@ public class FilmsDto {
      */
     public void setGenres(List<String> genres) {
         this.genres = genres;
+    }
+
+    /**
+     * @return realisateurs
+     */
+    public List<RealisateursDto> getRealisateurs() {
+        return realisateurs;
+    }
+
+    /**
+     * @param realisateurs
+     */
+    public void setRealisateurs(List<RealisateursDto> realisateurs) {
+        this.realisateurs = realisateurs;
     }
 }

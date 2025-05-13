@@ -1,5 +1,6 @@
 package fr.diginamic.entities;
 
+import fr.diginamic.entities.embedded.FilmsGenresId;
 import fr.diginamic.entities.embedded.FilmsRealisateursId;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class FilmsRealisateurs implements Serializable {
 
     @ManyToOne
     @MapsId("realId")
-    @JoinColumn(name = "id_realisateur", referencedColumnName = "idImdb")
+    @JoinColumn(name = "id_realisateurs", referencedColumnName = "idImdb")
     private Realisateurs realisateurs;
 
 
@@ -45,6 +46,8 @@ public class FilmsRealisateurs implements Serializable {
      */
     public void setFilm(Films film) {
         this.film = film;
+        if (id == null) id = new FilmsRealisateursId();
+        id.setFilmsId(film.getIdImdb());
     }
 
     /**
@@ -59,5 +62,7 @@ public class FilmsRealisateurs implements Serializable {
      */
     public void setRealisateurs(Realisateurs realisateurs) {
         this.realisateurs = realisateurs;
+        if (id == null) id = new FilmsRealisateursId();
+        id.setRealId(realisateurs.getIdImdb());
     }
 }

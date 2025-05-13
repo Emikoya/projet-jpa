@@ -21,10 +21,8 @@ public class NaissanceUtils {
             String dateNaissance = naissanceNode.path("dateNaissance").asText().trim();
             String lieuNaissance = naissanceNode.path("lieuNaissance").asText().trim();
 
-            // On formate la date selon DateUtils
-            LocalDate dateformat = DateUtils.parseDate(dateNaissance);
 
-            return new Naissance(dateformat, lieuNaissance);
+            return new Naissance(dateNaissance, lieuNaissance);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -34,15 +32,18 @@ public class NaissanceUtils {
 
     // Classe interne pour représenter les données extraites
     public static class Naissance {
-        private LocalDate dateNaissance;
+        private String dateNaissance;
         private String lieuNaissance;
 
-        public Naissance(LocalDate dateNaissance, String lieuNaissance) {
+        public Naissance() {
+        }
+
+        public Naissance(String dateNaissance, String lieuNaissance) {
             this.dateNaissance = dateNaissance;
             this.lieuNaissance = lieuNaissance;
         }
 
-        public LocalDate getDateNaissance() {
+        public String getDateNaissance() {
             return dateNaissance;
         }
 

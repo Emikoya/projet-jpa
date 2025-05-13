@@ -1,6 +1,8 @@
 package org.example;
 
 import fr.diginamic.services.DatabaseVerif;
+import fr.diginamic.services.GenresService;
+import fr.diginamic.services.PaysService;
 import fr.diginamic.services.inserts.FilmsInsertService;
 
 import javax.persistence.EntityManager;
@@ -21,15 +23,15 @@ public class Main {
         try {
             entityManager.getTransaction().begin();
 
+//            PaysService insertPays = new PaysService();
+//            insertPays.insertData(entityManager);
+//
+//            GenresService insertGenres = new GenresService();
+//            insertGenres.insertData(entityManager);
+
             FilmsInsertService insertFilms = new FilmsInsertService();
             insertFilms.insertData(entityManager);
 
-
-//        PaysService insertPays = new PaysService();
-//        insertPays.insertData(entityManager);
-
-//        GenresInsert insertGenres = new GenresInsert();
-//        insertGenres.insertData(entityManager);
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             if (entityManager.getTransaction().isActive()) {

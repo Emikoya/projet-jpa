@@ -1,9 +1,5 @@
 package fr.diginamic.dto;
 
-import fr.diginamic.entities.Films;
-import fr.diginamic.entities.Genres;
-import fr.diginamic.entities.embedded.FilmsGenresId;
-
 public class FilmsGenresDto {
 
     private FilmsDto film;

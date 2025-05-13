@@ -2,7 +2,10 @@ package fr.diginamic.services.inserts;
 
 import fr.diginamic.dao.FilmsDao;
 import fr.diginamic.dto.FilmsDto;
+import fr.diginamic.dto.RealisateursDto;
 import fr.diginamic.entities.Films;
+import fr.diginamic.services.FilmsRealisateursService;
+import fr.diginamic.services.RealisateursService;
 import fr.diginamic.services.converts.FilmsFileConverter;
 import fr.diginamic.services.FilmsGenresService;
 
@@ -22,6 +25,8 @@ public class FilmsInsertService {
 
         FilmsDao daoFilms = new FilmsDao(entityManager);
         FilmsGenresService fgService = new FilmsGenresService();
+        RealisateursService realService = new RealisateursService();
+        FilmsRealisateursService fmService = new FilmsRealisateursService();
 
         try {
             for (FilmsDto dto : dtos) {
@@ -29,6 +34,15 @@ public class FilmsInsertService {
 
                 // Ajout des genres associés
                 fgService.insertData(entityManager, film, dto);
+
+                // Ajout des réalisateurs
+                List<RealisateursDto> realDtos = dto.getRealisateurs();
+                for (RealisateursDto realDto : realDtos) {
+                    realService.insertData(entityManager, realDto);
+                }
+
+                // Puis la jointure
+                fmService.insertData(entityManager, film, dto);
             }
 
         } catch (Exception e) {

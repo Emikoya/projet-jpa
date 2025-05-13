@@ -19,7 +19,7 @@ public class PaysService {
      * Récupère un pays depuis la base ou le crée s’il n’existe pas encore.
      * Ne gère pas la transaction (c’est Main qui le fait).
      */
-    public Pays getPays(EntityManager entityManager, String nomPays, String url) {
+    public static Pays getPays(EntityManager entityManager, String nomPays, String url) {
         try {
             PaysDao dao = new PaysDao(entityManager);
             return dao.getOrCreate(nomPays, url);

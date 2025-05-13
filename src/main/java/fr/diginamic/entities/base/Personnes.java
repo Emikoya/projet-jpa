@@ -1,8 +1,10 @@
 package fr.diginamic.entities.base;
 
 import fr.diginamic.entities.Lieux;
+import fr.diginamic.entities.Realisateurs;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -23,7 +25,7 @@ public class Personnes {
     private String nom;
     private String prenom;
     @Column(name = "date_naissance")
-    private Date dateNaissance;
+    private LocalDate dateNaissance;
     private String url;
 
     /**
@@ -80,14 +82,14 @@ public class Personnes {
     /**
      * @return dateNaissance
      */
-    public Date getDateNaissance() {
+    public LocalDate getDateNaissance() {
         return dateNaissance;
     }
 
     /**
      * @param dateNaissance
      */
-    public void setDateNaissance(Date dateNaissance) {
+    public void setDateNaissance(LocalDate dateNaissance) {
         this.dateNaissance = dateNaissance;
     }
 
