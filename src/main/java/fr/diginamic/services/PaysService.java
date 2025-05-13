@@ -18,7 +18,7 @@ public class PaysService {
      * Cette méthode permet de récupérer un pays existant ou d'en créer un nouveau
      * si celui-ci n'existe pas encore.
      */
-    public Pays getOrCreate(String nomPays, String url) {
+    public Pays getPays(String nomPays, String url) {
         EntityManager em = emf.createEntityManager();
         Pays pays;
 

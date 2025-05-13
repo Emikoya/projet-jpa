@@ -12,6 +12,7 @@ public class FilmsDto {
 
     @JsonProperty("nom")
     private String titre;
+    @JsonProperty("anneeSortie")
     private Year annee;
     private Float rating;
     private String url;

@@ -16,7 +16,7 @@ public class LieuxService {
      * Cette méthode permet de récupérer un pays existant ou d'en créer un nouveau
      * si celui-ci n'existe pas encore.
      */
-    public Lieux getOrCreate(int id, String etat, String ville, Pays pays) {
+    public Lieux getLieux(int id, String etat, String ville, Pays pays) {
         EntityManager em = emf.createEntityManager();
         Lieux lieux;
 

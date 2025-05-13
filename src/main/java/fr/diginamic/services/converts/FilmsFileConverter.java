@@ -44,15 +44,15 @@ public class FilmsFileConverter {
         // TODO: gérer aussi les genres, pays, lieux s’ils existent
         // Récupération du pays principal du film
         PaysService paysService = new PaysService();
-        Pays pays = paysService.getOrCreate(dto.getPays().getNom(), dto.getPays().getUrl());
+        Pays pays = paysService.getPays(dto.getPays().getNom(), dto.getPays().getUrl());
         films.setPays(pays);
 
         // Récupération du lieu de tournage (ville, état, pays)
         LieuxService lieuxService = new LieuxService();
         LieuxDto lieuDto = dto.getLieux();
-        Pays paysLieu = paysService.getOrCreate(lieuDto.getPays(), null); // URL souvent absente ici
+        Pays paysLieu = paysService.getPays(lieuDto.getPays(), null); // URL souvent absente ici
 
-        Lieux lieux = lieuxService.getOrCreate(
+        Lieux lieux = lieuxService.getLieux(
                 lieuDto.getId(),
                 lieuDto.getEtat(),
                 lieuDto.getVille(),
