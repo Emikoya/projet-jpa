@@ -1,37 +1,25 @@
 package fr.diginamic.services;
 
 import fr.diginamic.dao.LieuxDao;
-import fr.diginamic.dao.PaysDao;
 import fr.diginamic.entities.Lieux;
 import fr.diginamic.entities.Pays;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 public class LieuxService {
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("jpa_project");
 
     /**
      * Cette méthode permet d'instancier une transaction avec la base de données
      * en vérifiant l'existence du lieux avec la méthode getOrCreate
      */
-    public Lieux getLieux(int id, String etat, String ville, Pays pays) {
-        EntityManager em = emf.createEntityManager();
+    public Lieux getLieux(EntityManager entityManager, int id, String etat, String ville, Pays pays) {
         Lieux lieux;
 
         try {
-            em.getTransaction().begin();
-
-            LieuxDao dao = new LieuxDao(em);
+            LieuxDao dao = new LieuxDao(entityManager);
             lieux = dao.getOrCreate(id, etat, ville, pays);
-
-            em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
             throw new RuntimeException(e);
-        } finally {
-            em.close();
         }
 
         return lieux;

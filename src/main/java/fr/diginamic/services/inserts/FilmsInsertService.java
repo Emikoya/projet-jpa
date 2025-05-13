@@ -4,6 +4,7 @@ import fr.diginamic.dao.FilmsDao;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.entities.Films;
 import fr.diginamic.services.converts.FilmsFileConverter;
+import fr.diginamic.services.FilmsGenresService;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
@@ -16,27 +17,22 @@ import java.util.List;
 
 public class FilmsInsertService {
     public void insertData(EntityManager entityManager) throws IOException {
-
         FilmsFileConverter reader = new FilmsFileConverter();
         List<FilmsDto> dtos = reader.mapperJson("src/main/resources/filmstest.json");
 
         FilmsDao daoFilms = new FilmsDao(entityManager);
+        FilmsGenresService fgService = new FilmsGenresService();
 
         try {
-            entityManager.getTransaction().begin();
-
             for (FilmsDto dto : dtos) {
-                Films film = FilmsFileConverter.toEntity(dto);
-                daoFilms.insert(film);
+                Films film = daoFilms.getOrCreate(dto);
+
+                // Ajout des genres associés
+                fgService.insertData(entityManager, film, dto);
             }
 
-            entityManager.getTransaction().commit();
-
         } catch (Exception e) {
-            entityManager.getTransaction().rollback();
             throw new RuntimeException(e);
-        } finally {
-            entityManager.close();
         }
     }
 }

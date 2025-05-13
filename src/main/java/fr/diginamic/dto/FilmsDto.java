@@ -1,10 +1,9 @@
 package fr.diginamic.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import fr.diginamic.entities.Lieux;
 import fr.diginamic.entities.Pays;
 
-import java.time.Year;
+import java.util.List;
 
 public class FilmsDto {
     @JsonProperty("id")
@@ -24,6 +23,9 @@ public class FilmsDto {
     private LieuxDto lieux;
 
     private Pays pays;
+
+    @JsonProperty("genres")
+    private List<String> genres;
 
     public FilmsDto() {
     }
@@ -151,5 +153,19 @@ public class FilmsDto {
      */
     public void setPays(Pays pays) {
         this.pays = pays;
+    }
+
+    /**
+     * @return genres
+     */
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    /**
+     * @param genres
+     */
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
     }
 }

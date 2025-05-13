@@ -1,10 +1,12 @@
 package fr.diginamic.dao;
 
 import fr.diginamic.entities.Genres;
+import fr.diginamic.entities.enums.GenresType;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import java.sql.SQLException;
-import java.util.List;
 
 public class GenresDao implements InterfaceDao<Genres> {
 
@@ -22,5 +24,22 @@ public class GenresDao implements InterfaceDao<Genres> {
     @Override
     public void insert(Genres genres) {
         entityManager.persist(genres);
+    }
+
+    /**
+     * Récupère un genre existant par son nom, ou le crée s'il n'existe pas encore.
+     */
+    public Genres getOrCreate(GenresType nom) {
+        try {
+            TypedQuery<Genres> query = entityManager.createQuery(
+                    "SELECT g FROM Genres g WHERE g.nom = :nom", Genres.class);
+            query.setParameter("nom", nom);
+            return query.getSingleResult();
+        } catch (NoResultException e) {
+            Genres genres = new Genres();
+            genres.setNom(nom);
+            insert(genres);
+            return genres;
+        }
     }
 }

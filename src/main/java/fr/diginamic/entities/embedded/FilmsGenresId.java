@@ -1,5 +1,6 @@
 package fr.diginamic.entities.embedded;
 
+import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,8 +11,11 @@ import java.util.Objects;
 
 @Embeddable
 public class FilmsGenresId implements Serializable {
+    @Column(name = "films_id")
     private String filmsId;
-    private int genresId;
+
+    @Column(name = "genres_id")
+    private Integer genresId;
 
     public FilmsGenresId() {
     }
@@ -31,5 +35,33 @@ public class FilmsGenresId implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(filmsId, genresId);
+    }
+
+    /**
+     * @return filmsId
+     */
+    public String getFilmsId() {
+        return filmsId;
+    }
+
+    /**
+     * @param filmsId
+     */
+    public void setFilmsId(String filmsId) {
+        this.filmsId = filmsId;
+    }
+
+    /**
+     * @return genresId
+     */
+    public int getGenresId() {
+        return genresId;
+    }
+
+    /**
+     * @param genresId
+     */
+    public void setGenresId(int genresId) {
+        this.genresId = genresId;
     }
 }

@@ -1,18 +1,18 @@
 package fr.diginamic.dao;
 
+import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.entities.Films;
-import fr.diginamic.entities.Pays;
+import fr.diginamic.services.converts.FilmsFileConverter;
 
 import javax.persistence.EntityManager;
 import java.sql.SQLException;
-import java.util.List;
 
 public class FilmsDao implements InterfaceDao<Films>{
 
-    private EntityManager em;
+    private EntityManager entityManager;
 
-    public FilmsDao(EntityManager em) {
-        this.em = em;
+    public FilmsDao(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
@@ -22,6 +22,17 @@ public class FilmsDao implements InterfaceDao<Films>{
 
     @Override
     public void insert(Films films) {
-        em.persist(films);
+        entityManager.persist(films);
+    }
+
+    public Films getOrCreate(FilmsDto dto) throws SQLException {
+        Films existing = entityManager.find(Films.class, dto.getIdImdb());
+        if (existing != null) {
+            return existing;
+        }
+
+        Films film = FilmsFileConverter.toEntity(entityManager, dto);
+        insert(film);
+        return film;
     }
 }

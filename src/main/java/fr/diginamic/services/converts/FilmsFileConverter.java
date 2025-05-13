@@ -1,15 +1,20 @@
 package fr.diginamic.services.converts;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import fr.diginamic.dao.FilmsGenresDao;
+import fr.diginamic.dao.GenresDao;
 import fr.diginamic.dto.FilmsDto;
 import fr.diginamic.dto.LieuxDto;
-import fr.diginamic.entities.Films;
-import fr.diginamic.entities.Lieux;
-import fr.diginamic.entities.Pays;
+import fr.diginamic.entities.*;
+import fr.diginamic.entities.enums.GenresType;
+import fr.diginamic.services.GenresService;
 import fr.diginamic.services.LieuxService;
 import fr.diginamic.services.PaysService;
 import fr.diginamic.utils.DateUtils;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -33,31 +38,26 @@ public class FilmsFileConverter {
     /**
      * Mappage des données
      */
-    public static Films toEntity(FilmsDto dto) throws SQLException {
+    public static Films toEntity(EntityManager entityManager, FilmsDto dto) throws SQLException {
         Films films = new Films();
+        // Récuparation des attributs de Films
         films.setIdImdb(dto.getIdImdb());
         films.setTitre(dto.getTitre());
         films.setLangue(dto.getLangue());
         films.setUrl(dto.getUrl());
         films.setResume(dto.getResume());
         films.setRating(dto.getRating());
-        // TODO: gérer aussi les genres, pays, lieux s’ils existent
-        // Formatage de l'année
-        try {
-            films.setAnnee(DateUtils.parseYear(dto.getAnnee()));
-        } catch (NumberFormatException e) {
-            films.setAnnee(null); // ou une valeur par défaut
-        }
+        films.setAnnee(Integer.parseInt(dto.getAnnee()));
         // Récupération du pays principal du film
         PaysService paysService = new PaysService();
-        Pays pays = paysService.getPays(dto.getPays().getNom(), dto.getPays().getUrl());
+        Pays pays = paysService.getPays(entityManager, dto.getPays().getNom(), dto.getPays().getUrl());
         films.setPays(pays);
-
         // Récupération du lieu de tournage (ville, état, pays)
         LieuxService lieuxService = new LieuxService();
         LieuxDto lieuDto = dto.getLieux();
-        Pays paysLieu = paysService.getPays(lieuDto.getPays(), null);
+        Pays paysLieu = paysService.getPays(entityManager, lieuDto.getPays(), null);
         Lieux lieux = lieuxService.getLieux(
+                entityManager,
                 lieuDto.getId(),
                 lieuDto.getEtat(),
                 lieuDto.getVille(),

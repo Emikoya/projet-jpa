@@ -33,6 +33,19 @@ public class FilmsGenres implements Serializable {
     }
 
     /**
+     * @return id
+     */
+    public FilmsGenresId getId() {
+        return id;
+    }
+    /**
+     * @param id
+     */
+    public void setId(FilmsGenresId id) {
+        this.id = id;
+    }
+
+    /**
      * @return film
      */
     public Films getFilm() {
@@ -44,6 +57,8 @@ public class FilmsGenres implements Serializable {
      */
     public void setFilm(Films film) {
         this.film = film;
+        if (id == null) id = new FilmsGenresId();
+        id.setFilmsId(film.getIdImdb());
     }
 
     /**
@@ -58,5 +73,7 @@ public class FilmsGenres implements Serializable {
      */
     public void setGenre(Genres genre) {
         this.genre = genre;
+        if (id == null) id = new FilmsGenresId();
+        id.setGenresId(genre.getId());
     }
 }
