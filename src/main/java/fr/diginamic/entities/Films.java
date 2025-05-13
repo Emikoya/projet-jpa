@@ -25,7 +25,7 @@ public class Films {
     private String idImdb;
 
     private String titre;
-    private Year annee;
+    private Integer annee;
     private Float rating;
     private String url;
     private String langue;
@@ -77,13 +77,13 @@ public class Films {
     /**
      * @return annee
      */
-    public Year getAnnee() {
+    public Integer getAnnee() {
         return annee;
     }
     /**
      * @param annee
      */
-    public void setAnnee(Year annee) {
+    public void setAnnee(Integer annee) {
         this.annee = annee;
     }
 

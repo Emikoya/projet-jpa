@@ -8,6 +8,7 @@ import fr.diginamic.entities.Lieux;
 import fr.diginamic.entities.Pays;
 import fr.diginamic.services.LieuxService;
 import fr.diginamic.services.PaysService;
+import fr.diginamic.utils.DateUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -36,12 +37,17 @@ public class FilmsFileConverter {
         Films films = new Films();
         films.setIdImdb(dto.getIdImdb());
         films.setTitre(dto.getTitre());
-        films.setAnnee(dto.getAnnee());
         films.setLangue(dto.getLangue());
         films.setUrl(dto.getUrl());
         films.setResume(dto.getResume());
         films.setRating(dto.getRating());
         // TODO: gérer aussi les genres, pays, lieux s’ils existent
+        // Formatage de l'année
+        try {
+            films.setAnnee(DateUtils.parseYear(dto.getAnnee()));
+        } catch (NumberFormatException e) {
+            films.setAnnee(null); // ou une valeur par défaut
+        }
         // Récupération du pays principal du film
         PaysService paysService = new PaysService();
         Pays pays = paysService.getPays(dto.getPays().getNom(), dto.getPays().getUrl());

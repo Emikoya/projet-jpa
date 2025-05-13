@@ -13,7 +13,7 @@ public class FilmsDto {
     @JsonProperty("nom")
     private String titre;
     @JsonProperty("anneeSortie")
-    private Year annee;
+    private String annee;
     private Float rating;
     private String url;
     private String langue;
@@ -59,14 +59,13 @@ public class FilmsDto {
     /**
      * @return annee
      */
-    public Year getAnnee() {
+    public String getAnnee() {
         return annee;
     }
-
     /**
      * @param annee
      */
-    public void setAnnee(Year annee) {
+    public void setAnnee(String annee) {
         this.annee = annee;
     }
 

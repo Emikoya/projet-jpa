@@ -32,4 +32,10 @@ public class DateUtils {
         }
         throw new IllegalArgumentException("Impossible de parser la date: " + dateString);
     }
+
+    public static Integer parseYear(String dateString) {
+        LocalDate parsedDate = parseDate(dateString);
+        return (parsedDate != null) ? parsedDate.getYear() : null;
+    }
+
 }
