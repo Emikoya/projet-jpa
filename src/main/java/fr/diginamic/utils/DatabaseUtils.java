@@ -5,6 +5,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Cette classe va permettre de vérifier si la base de donnée existe,
+ * sinon on la crée. Elle permet d'éviter de la créer manuellement.
+ */
 public class DatabaseUtils {
 
     /**

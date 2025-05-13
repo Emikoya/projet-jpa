@@ -8,6 +8,10 @@ import fr.diginamic.entities.embedded.FilmsGenresId;
 import javax.persistence.EntityManager;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités FilmsGenres en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class FilmsGenresDao implements InterfaceDao<FilmsGenres>{
     private EntityManager entityManager;
 

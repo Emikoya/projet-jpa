@@ -2,6 +2,10 @@ package fr.diginamic.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * DTO représentant un lieu tel qu'il est défini dans le fichier JSON.
+ * Utilisé pour transférer les données vers l'entité Lieux.
+ */
 public class LieuxDto {
     private int id;
 

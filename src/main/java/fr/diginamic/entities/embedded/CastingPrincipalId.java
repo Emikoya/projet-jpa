@@ -5,6 +5,10 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Représente une clé composite pour l'entité CastingPrincipal.
+ * Cette clé est composée de l'identifiant IMDb du film et de celui de l'acteur.
+ */
 @Embeddable
 public class CastingPrincipalId implements Serializable {
 

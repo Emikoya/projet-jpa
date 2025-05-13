@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Définit un acteur. Il prend pour héritage les attributs de la classe Personnes
+ * Définit un acteur en entité. Il prend pour héritage les attributs de la classe Personnes
  */
 @Entity
 @Table(name="acteurs")

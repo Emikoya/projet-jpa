@@ -6,6 +6,10 @@ import fr.diginamic.entities.embedded.FilmsRealisateursId;
 import javax.persistence.EntityManager;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités FilmsRealisateurs en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class FilmsRealisateursDao implements InterfaceDao<FilmsRealisateurs>{
 
     EntityManager entityManager;

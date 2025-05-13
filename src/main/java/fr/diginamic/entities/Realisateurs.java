@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * Définit un réalisateur. Il prend pour héritage les attributs de la classe Personnes
+ * Définit un réalisateur en entité. Il prend pour héritage les attributs de la classe Personnes
  */
 @Entity
 @Table(name="realisateurs")

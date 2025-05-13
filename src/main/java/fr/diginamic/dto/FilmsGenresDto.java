@@ -1,5 +1,9 @@
 package fr.diginamic.dto;
 
+/**
+ * DTO représentant une jointure entre un film et un genre.
+ * Utilisé pour transférer les données vers l'entité FilmsGenres.
+ */
 public class FilmsGenresDto {
 
     private FilmsDto film;

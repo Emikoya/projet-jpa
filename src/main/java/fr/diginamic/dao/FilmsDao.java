@@ -7,6 +7,10 @@ import fr.diginamic.services.converts.FilmsFileConverter;
 import javax.persistence.EntityManager;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités Films en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class FilmsDao implements InterfaceDao<Films>{
 
     private EntityManager entityManager;

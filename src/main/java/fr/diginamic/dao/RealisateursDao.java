@@ -7,6 +7,10 @@ import javax.persistence.EntityManager;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
+/**
+ * DAO pour accéder aux entités Realisateurs en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class RealisateursDao implements InterfaceDao<Realisateurs> {
 
     EntityManager entityManager;

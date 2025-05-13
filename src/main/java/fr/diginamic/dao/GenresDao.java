@@ -8,6 +8,10 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités Genres en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class GenresDao implements InterfaceDao<Genres> {
 
     private EntityManager entityManager;

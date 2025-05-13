@@ -10,6 +10,9 @@ import fr.diginamic.entities.Realisateurs;
 import javax.persistence.EntityManager;
 import java.util.List;
 
+/**
+ * Service responsable de la gestion des associations entre les films et les réalisateurs.
+ */
 public class FilmsRealisateursService {
 
     /**

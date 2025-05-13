@@ -9,11 +9,6 @@ import java.util.Locale;
  * Mise en place du format de la date
  */
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Locale;
-
 public class DateUtils {
 
     public static LocalDate parseDate(String dateString) {

@@ -5,6 +5,10 @@ import fr.diginamic.entities.Pays;
 import javax.persistence.*;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités Pays en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class PaysDao implements InterfaceDao<Pays>{
 
     private EntityManager entityManager;

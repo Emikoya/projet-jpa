@@ -1,14 +1,11 @@
 package org.example;
 
 import fr.diginamic.services.DatabaseVerif;
-import fr.diginamic.services.GenresService;
-import fr.diginamic.services.PaysService;
 import fr.diginamic.services.inserts.FilmsInsertService;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws Exception {

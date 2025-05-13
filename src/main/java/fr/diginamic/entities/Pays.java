@@ -3,7 +3,7 @@ package fr.diginamic.entities;
 import javax.persistence.*;
 
 /**
- * Définit un pays
+ * Définit un pays en entité
  */
 
 

@@ -5,6 +5,10 @@ import fr.diginamic.entities.Pays;
 
 import java.util.List;
 
+/**
+ * DTO représentant un film tel qu'il est défini dans le fichier JSON.
+ * Utilisé pour transférer les données vers l'entité Films.
+ */
 public class FilmsDto {
     @JsonProperty("id")
     private String idImdb;

@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 /**
- * Définit une personne
+ * Définit une personne. Elle sera la classe mère d'Acteurs et Realisateurs
  */
 
 @Entity

@@ -6,7 +6,8 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Définit une classe composée afin d'établir le lien entre les clés étrangères
+ * Représente une clé composite pour l'entité Roles.
+ * Cette clé est composée de l'identifiant IMDb du film et de celui de l'acteur.
  */
 
 @Embeddable

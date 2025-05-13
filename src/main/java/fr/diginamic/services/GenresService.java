@@ -5,9 +5,10 @@ import fr.diginamic.entities.Genres;
 import fr.diginamic.entities.enums.GenresType;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 
-
+/**
+ * Service responsable de la gestion des genres cinématographique.
+ */
 public class GenresService {
 
     /**

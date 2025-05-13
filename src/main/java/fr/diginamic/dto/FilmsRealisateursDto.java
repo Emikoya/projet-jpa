@@ -1,5 +1,9 @@
 package fr.diginamic.dto;
 
+/**
+ * DTO représentant une jointure entre un film et un réalisateur.
+ * Utilisé pour transférer les données vers l'entité FilmsRealisateurs.
+ */
 public class FilmsRealisateursDto {
 
     private FilmsDto film;

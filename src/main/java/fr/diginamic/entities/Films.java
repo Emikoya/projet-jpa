@@ -5,9 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Définit un film
+ * Définit un film en entité
  */
-
 
 @Entity
 @Table(name="films")

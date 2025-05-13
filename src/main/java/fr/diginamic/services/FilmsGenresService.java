@@ -11,6 +11,9 @@ import fr.diginamic.entities.enums.GenresType;
 import javax.persistence.EntityManager;
 
 
+/**
+ * Service responsable de la gestion des associations entre les films et leurs genres.
+ */
 public class FilmsGenresService {
 
     /**

@@ -3,7 +3,7 @@ package fr.diginamic.entities;
 import javax.persistence.*;
 
 /**
- * Définit un lieu
+ * Définit un lieu en entité
  */
 
 @Entity

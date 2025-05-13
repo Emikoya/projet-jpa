@@ -1,5 +1,9 @@
 package fr.diginamic.dto;
 
+/**
+ * DTO représentant un pays tel qu'il est défini dans le fichier JSON.
+ * Utilisé pour transférer les données vers l'entité Pays.
+ */
 public class PaysDto {
 
     private String nom;

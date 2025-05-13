@@ -13,6 +13,9 @@ import fr.diginamic.utils.NaissanceUtils;
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 
+/**
+ * Service responsable de la gestion des réalisateurs.
+ */
 public class RealisateursService {
     public void insertData(EntityManager entityManager, RealisateursDto dto) {
         // Traitement du nom et prénom

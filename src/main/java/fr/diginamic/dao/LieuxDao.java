@@ -6,6 +6,10 @@ import fr.diginamic.entities.Pays;
 import javax.persistence.*;
 import java.sql.SQLException;
 
+/**
+ * DAO pour accéder aux entités Lieux en base de données.
+ * Fournit des opérations de recherche, insertion & mise à jour.
+ */
 public class LieuxDao implements InterfaceDao<Lieux>{
     private EntityManager entityManager;
 

@@ -6,6 +6,9 @@ import fr.diginamic.entities.Pays;
 
 import javax.persistence.EntityManager;
 
+/**
+ * Service responsable de la gestion des lieux, que ça soit tournage ou naissance.
+ */
 public class LieuxService {
 
     /**

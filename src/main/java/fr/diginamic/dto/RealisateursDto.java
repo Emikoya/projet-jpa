@@ -3,6 +3,10 @@ package fr.diginamic.dto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import fr.diginamic.utils.NaissanceUtils;
 
+/**
+ * DTO représentant un réalisateur tel qu'il est défini dans le fichier JSON.
+ * Utilisé pour transférer les données vers l'entité Realisateurs.
+ */
 public class RealisateursDto {
 
     @JsonProperty("id")

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Définit les genres cinématographiques
+ * Définit les genres cinématographiques en entité
  */
 
 @Entity
